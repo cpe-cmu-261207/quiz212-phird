@@ -1,4 +1,33 @@
+import { useState } from "react";
+
 function App() {
+  let initialize = 620610801;
+  let [Id, setId] = useState(initialize);
+
+  function reduceNumber(event) {
+    event.preventDefault();
+    setId((myid) => {
+      let newId = Id - 1;
+      return newId;
+    });
+  }
+
+  function addNumber(event) {
+    event.preventDefault();
+    setId((myid) => {
+      let newId = Id + 1;
+      return newId;
+    });
+  }
+
+  function resetButt(event) {
+    event.preventDefault();
+    setId((myid) => {
+      let newId = initialize;
+      return newId;
+    });
+  }
+
   const persons = [
     {
       name: "Bob",
@@ -16,10 +45,28 @@ function App() {
       {/* Code me please! */}
       <div class="mb-4">
         <h3 class="title is-3">ID Counter</h3>
-        <p>YOUR ID HERE</p>
-        <button>-</button>
-        <button>reset</button>
-        <button>+</button>
+        <p>{Id}</p>
+        <button
+          onClick={(e) => {
+            reduceNumber(e);
+          }}
+        >
+          -
+        </button>
+        <button
+          onClick={(e) => {
+            resetButt(e);
+          }}
+        >
+          reset
+        </button>
+        <button
+          onClick={(e) => {
+            addNumber(e);
+          }}
+        >
+          +
+        </button>
       </div>
 
       {/* Convert me to a component! */}
